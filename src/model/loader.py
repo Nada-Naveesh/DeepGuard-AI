@@ -46,9 +46,15 @@ def load_model():
                 model.load_weights(model_path)
                 return model
             except Exception as weight_error:
-                st.error(f"❌ Failed to load model. Please contact support.")
+                st.error(
+                    "The deep-learning model could not be loaded. "
+                    "Please verify the model configuration, Hugging Face connection, and required dependencies."
+                )
                 return None
 
     except Exception as e:
-        st.error(f"❌ Error loading model. Please refresh the page or contact support.")
+        st.error(
+            "The deep-learning model could not be loaded. "
+            "Please verify the model configuration, Hugging Face connection, and required dependencies."
+        )
         return None

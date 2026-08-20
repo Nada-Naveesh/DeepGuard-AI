@@ -61,8 +61,8 @@ def preprocess_image(image: Image.Image, method: str = "training_match") -> Opti
             return None
 
         return arr
-    except Exception as e:
-        st.error(f"❌ Error preprocessing image: {e}")
-        import traceback
-        st.error(f"Traceback: {traceback.format_exc()}")
+    except (ValueError, OSError, cv2.error) as e:
+        st.error(
+            "Unable to process the uploaded image. Please upload a valid JPG, JPEG, or PNG image."
+        )
         return None
